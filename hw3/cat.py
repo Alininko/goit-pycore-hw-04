@@ -1,18 +1,9 @@
 import sys
 from pathlib import Path
-from colorama import Fore, Back, Style, init
+from colorama import Fore, init
 
-if len(sys.argv) < 2: #checks if directory name is added
-        print("Use following command: python cat.py <directory>")
-        sys.exit()
 
-init(autoreset=True) #resettimg the colors to default after each print
-
-root = Path(sys.argv[1])
-
-print(Fore.BLUE + root.name) #orinting the name of seletced directory before the rest of the structure is returned by the function
-
-def print_tree(path, indent=1):
+def print_tree(path: Path , indent: int =1) -> None:
 
     """Printing the durectory structure in colors (if a directory located inside the current one) with spaces added to each subfolder and file"""
 
@@ -29,4 +20,14 @@ def print_tree(path, indent=1):
 
 
 if __name__ == "__main__": #testing the fuction
-    print_tree(sys.argv[1])
+    if len(sys.argv) < 2:  # checks if directory name is added
+        print("Use following command: python cat.py <directory>")
+        sys.exit()
+
+    init(autoreset=True)  # resettimg the colors to default after each print
+
+    root = Path(sys.argv[1])
+
+    print(Fore.BLUE + root.name)  # orinting the name of seletced directory before the rest of the structure is returned by the function
+
+    print_tree(root)
