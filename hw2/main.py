@@ -1,8 +1,9 @@
 from pathlib import Path
 
 
-def get_cats_info(path):
-    """Function reading the text file, converting the lines into a list of dictionaries by:
+def get_cats_info(path) -> Path:
+    """Function reading the text file, converting the lines
+    into a list of dictionaries by:
         - going through each line
         - splitting each line into elements split by a comma
         - creating dictionary with the elements
@@ -20,11 +21,9 @@ def get_cats_info(path):
                 cats = {"id":id, "name":name, "age":age} #creating a disctionary with all elements from the line
                 all_cats.append(cats) # adding the dictionary to the list
 
-    
     except FileNotFoundError: #returning error message if the file is not found
         print("File not found")
-        
-    
+
     return all_cats
     
 
